@@ -34,7 +34,7 @@ jobs:
     
     - name: Update manifests
       run: |
-        git clone https://${{ secrets.CD_REPO_TOKEN }}@github.com/argocd-training.git cd-repo
+        git clone https://${{ secrets.CD_REPO_TOKEN }}@github.com/${{ github.actor }}/argocd-training.git cd-repo
         cd cd-repo/atelier/pipeline/myapp-cd
         sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}|" k8s/deployment.yaml
         git config user.name "GitHub Actions"
