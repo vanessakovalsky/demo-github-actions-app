@@ -36,7 +36,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        git clone https://x-access-token:${{GITHUB_TOKEN}}@github.com/vanessakovalsky/argocd-training.git
+        git clone https://x-access-token:${GITHUB_TOKEN}@github.com/vanessakovalsky/argocd-training.git
         ls -la argocd-training
         cd argocd-training/atelier/pipeline/myapp-cd
         sed -i "s|image:.*|image: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}|" k8s/deployment.yaml
